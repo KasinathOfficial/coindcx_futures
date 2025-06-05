@@ -67,10 +67,10 @@ def get_market_data():
 def filter_futures(df):
     return df[df['market'].str.contains("_PERP")]
 
-# Golden Setup Detector (Mock Logic)
+# Golden Setup Detector (Less Strict)
 def find_100_percent_setup(df):
     df["spread"] = abs(df["ask"] - df["bid"])
-     good = df[(df["volume"] > 500000) & (df["spread"] < 0.05)]
+    good = df[(df["volume"] > 500000) & (df["spread"] < 0.05)]
     return good.sort_values("volume", ascending=False).head(1)
 
 # Display metrics function
