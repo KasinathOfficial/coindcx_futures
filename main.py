@@ -70,7 +70,7 @@ def filter_futures(df):
 # Golden Setup Detector (Mock Logic)
 def find_100_percent_setup(df):
     df["spread"] = abs(df["ask"] - df["bid"])
-    good = df[(df["volume"] > 1000000) & (df["spread"] < 0.01)]
+     good = df[(df["volume"] > 500000) & (df["spread"] < 0.05)]
     return good.sort_values("volume", ascending=False).head(1)
 
 # Display metrics function
