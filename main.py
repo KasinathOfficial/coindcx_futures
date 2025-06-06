@@ -143,4 +143,4 @@ else:
         st.info("Please check again later or adjust settings.")
 
 st.markdown("---")
-st.caption("Made for real crypto traders building wealth step-by-step 🚀")
+st.caption("Made for real crypto traders building wealth step-by-step 1🚀")
