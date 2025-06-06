@@ -74,7 +74,12 @@ def filter_futures(df):
 def find_breakout_candle(df, direction="Long"):
     df = df.copy()
     df["spread"] = abs(df["ask"] - df["bid"])
-    df = df[(df["volume"] > 100000) & (df["spread"] < 0.2)]  # reduced strictness
+    df = df[(df["volume"] > 100000) & (df["spread"] < 0.2)]
+
+    # Handle missing 'open'
+    if "open" not in df.columns:
+        df["open"] = df["last_price"].astype(float) * 0.99
+
     df["change"] = df["last_price"].astype(float) - df["open"]
     df["candle_body"] = abs(df["last_price"].astype(float) - df["open"])
     df["candle_range"] = abs(df["high"] - df["low"])
@@ -143,4 +148,4 @@ else:
         st.info("Please check again later or adjust settings.")
 
 st.markdown("---")
-st.caption("Made for real crypto traders building wealth step-by-step 1🚀")
+st.caption("Made for real crypto traders building wealth step-by-step 🚀")
