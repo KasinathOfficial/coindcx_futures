@@ -22,10 +22,10 @@ def get_market_pairs():
     except Exception as e:
         #st.error(f"Error fetching market pairs: {e}")
         # Fallback to a default list
-        return ["B-BTC_USDT", "B-ETH_USDT"]
-
+        print("ok")
+        
 market_pairs = get_market_pairs()
-selected_pair = st.selectbox("Select a Futures Market Pair:", market_pairs, index=market_pairs.index("B-BTC_USDT") if "B-BTC_USDT" in market_pairs else 0)
+selected_pair = st.text_input("Enter Futures Market Pair (e.g. B-BTC_USDT):", value="B-BTC_USDT")
 
 # Refresh interval
 interval = st.slider("Refresh Interval (seconds):", 5, 60, 10)
@@ -152,7 +152,7 @@ if start:
 
             st.altair_chart(chart, use_container_width=True)
 
-            st.markdown(f"### 🧭 ADX Trend: {adx_status}")
-            st.markdown(f"### 🚦 Trade Signal: {signal}")
+            st.markdown(f"##### 🧭 ADX Trend: {adx_status}")
+            st.markdown(f"##### 🚦 Trade Signal: {signal}")
 
         time.sleep(interval)
